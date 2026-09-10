@@ -1,0 +1,15 @@
+.analytics {
+	&__wrapper {
+		display: flex;
+		gap: 60px;
+		justify-content: space-between;
+	}
+	&__heading {
+		width: 100%;
+		max-width: 480px;
+	}
+	&__desc {
+		max-width: 465px;
+		margin-top: 24px;
+	}
+}

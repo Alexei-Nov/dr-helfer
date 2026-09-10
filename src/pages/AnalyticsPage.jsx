@@ -1,12 +1,12 @@
 import React from 'react'
 import TitleAndMetaTags from '../components/TitleAndMetaTags/TitleAndMetaTags'
-import Entrance from '../components/Entrance/Entrance'
+import Analytics from '../components/Analytics/Analytics'
 
-export default function Home() {
+export default function AnalyticsPage() {
 	return (
 		<>
 			<TitleAndMetaTags />
-			<Entrance />
+			<Analytics />
 		</>
 	)
 }

@@ -17,11 +17,27 @@
   width: 100%;
 }
 
+.leaf-bg__img {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  z-index: -1;
+}
+
+.leaf-bg__img:nth-child(2) {
+  top: 325px;
+  right: unset;
+  left: 0px;
+}
+
 @media screen and (max-width: 768px) {
   .header {
     padding: 20px 0;
   }
   .header__logo {
     height: 20px;
+  }
+  .leaf-bg__img:nth-child(2) {
+    display: none;
   }
 }

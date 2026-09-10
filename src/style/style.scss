@@ -6,6 +6,12 @@
 	line-height: 110%;
 }
 
+.text-60 {
+	font-size: 60px;
+	font-weight: 700;
+	line-height: 110%;
+}
+
 body {
 	font-family: Inter;
 	font-size: 18px;
@@ -68,23 +74,13 @@ body {
 	}
 }
 
-.leaf-bg {
-	&__img {
-		position: fixed;
-		top: 0px;
-		right: 0px;
-		z-index: -1;
-
-		&:nth-child(2) {
-			top: 325px;
-			right: unset;
-			left: 0px;
-		}
-	}
-}
-
 @media screen and (max-width: 768px) {
 	.text-80 {
+		font-size: 25px;
+		line-height: 110%;
+	}
+
+	.text-60 {
 		font-size: 25px;
 		line-height: 110%;
 	}
@@ -96,13 +92,5 @@ body {
 
 	.section {
 		padding: 20px 0;
-	}
-
-	.leaf-bg {
-		&__img {
-			&:nth-child(2) {
-				display: none;
-			}
-		}
 	}
 }

@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useNavigate } from "react-router-dom";
 import './entrance.css'
 
 export default function Entrance() {
 	const [files, setFiles] = useState([]);
-
+	const navigate = useNavigate();
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (files.length < 2) return;
@@ -14,6 +15,7 @@ export default function Entrance() {
 		});
 
 		// отправка formData
+		navigate("/analytics", { replace: true });
 	};
 	return (
 		<section className="section entrance">
