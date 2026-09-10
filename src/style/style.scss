@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+.text-80 {
+	font-size: 80px;
+	font-weight: 700;
+	line-height: 110%;
+}
+
+body {
+	font-family: Inter;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: normal;
+	color: #5a616c;
+	background: #eef4e4;
+}
+
+.fw-300 {
+	font-weight: 300;
+}
+.fw-500 {
+	font-weight: 500;
+}
+.fw-600 {
+	font-weight: 600;
+}
+.fw-700 {
+	font-weight: 700;
+}
+
+.container {
+	width: 100%;
+	max-width: 972px;
+	padding: 0px 16px;
+	margin: 0 auto;
+}
+
+.section {
+	padding: 100px 0;
+}
+
+.main {
+	position: relative;
+	z-index: 1;
+}
+
+.btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+	padding: 16px 26px;
+	border-radius: 10px;
+	background: #78a82c;
+
+	color: #fff;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: normal;
+
+	&_wide {
+		width: 100%;
+	}
+	&_disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+}
+
+.leaf-bg {
+	&__img {
+		position: fixed;
+		top: 0px;
+		right: 0px;
+		z-index: -1;
+
+		&:nth-child(2) {
+			top: 325px;
+			right: unset;
+			left: 0px;
+		}
+	}
+}

@@ -1,0 +1,164 @@
+.entrance {
+	&__wrapper {
+		display: flex;
+		gap: 65px;
+	}
+	&__col {
+		width: 100%;
+		max-width: 480px;
+	}
+	&__desc {
+		margin-top: 24px;
+	}
+	&__tags {
+		display: flex;
+		gap: 5px;
+	}
+	&__tag {
+		padding: 7px 19px;
+		border-radius: 13.293px;
+		background: #cded9c;
+		color: #545d46;
+		font-size: 14px;
+		line-height: 110%;
+		margin-top: 27px;
+	}
+	&__title {
+		color: #3e4553;
+	}
+	&__body {
+		width: 100%;
+		max-width: 385px;
+	}
+	&__btn {
+		margin-top: 10px;
+	}
+}
+
+.upload {
+	&__img {
+		display: flex;
+		border-radius: 12px;
+		background: #fff;
+		backdrop-filter: blur(0.8px);
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1/1;
+		overflow: hidden;
+
+		& img {
+			width: 100%;
+			height: 100%;
+			object-position: center;
+			object-fit: contain;
+		}
+	}
+	&__delete {
+		display: flex;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		cursor: pointer;
+	}
+	&__list {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 10px;
+	}
+
+	&__field {
+		display: none;
+	}
+	&__preview {
+		display: none;
+		width: 100%;
+		height: auto;
+		grid-column: span 2;
+
+		& img {
+			width: 100%;
+			height: 100%;
+			object-position: center;
+			object-fit: contain;
+		}
+	}
+	&__load-more {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1/1;
+		border-radius: 12px;
+		background: #fff;
+		backdrop-filter: blur(0.8px);
+		font-size: 9px;
+		line-height: 16px;
+
+		&-icon {
+			display: flex;
+		}
+	}
+	&__status {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		margin-top: 20px;
+		color: #78a82c;
+
+		&-text {
+			& div:nth-child(1) {
+				display: none;
+			}
+			& div:nth-child(2) {
+				display: block;
+			}
+		}
+	}
+	&__btn {
+		cursor: pointer;
+	}
+
+	&[data-files="0"] {
+		& .upload {
+			&__load-more {
+				display: none;
+			}
+			&__status {
+				display: none;
+				color: #5a616c;
+				&-text {
+					& div:nth-child(1) {
+						display: block;
+					}
+					& div:nth-child(2) {
+						display: none;
+					}
+				}
+			}
+			&__preview {
+				display: flex;
+			}
+		}
+	}
+	&[data-files="1"] {
+		& .upload {
+			&__status {
+				color: #5a616c;
+				&-text {
+					& div:nth-child(1) {
+						display: block;
+					}
+					& div:nth-child(2) {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}

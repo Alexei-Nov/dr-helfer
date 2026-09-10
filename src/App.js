@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header/Header";
+import Main from "./components/Main/Main";
+import { BrowserRouter as Router } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { HelmetProvider } from "react-helmet-async";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		// fetch('/data/cases/index.json')
+		// 	.then(res => res.json())
+		// 	.then(files =>
+		// 		Promise.all(
+		// 			files.map(file => fetch(`/data/cases/${file}`).then(r => r.json()))
+		// 		)
+		// 	)
+		// 	.then(cases => {
+		// 		dispatch(setCases(cases))
+		// 	});
+		// fetch('/data/blog/index.json')
+		// 	.then(res => res.json())
+		// 	.then(files =>
+		// 		Promise.all(
+		// 			files.map(file => fetch(`/data/blog/${file}`).then(r => r.json()))
+		// 		)
+		// 	)
+		// 	.then(cases => {
+		// 		dispatch(setBlogArticles(cases))
+		// 	});
+	}, [])
+
+
+	return (
+		<>
+			<div className="body-wrapper">
+				<HelmetProvider>
+					<Router>
+						<Header />
+						<Main />
+					</Router>
+				</HelmetProvider>
+			</div>
+		</>
+	);
 }
 
 export default App;
