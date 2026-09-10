@@ -1,4 +1,20 @@
 .analytics {
+	position: relative;
+	color: #fff;
+
+	&::after {
+		display: block;
+		content: "";
+		width: 100%;
+		height: 520px;
+		border-radius: 0 0 32px 32px;
+		background: linear-gradient(180deg, #323844 44.35%, #7e7f80 100%);
+		position: absolute;
+		top: -90px;
+		left: 0px;
+		z-index: -2;
+	}
+
 	&__wrapper {
 		display: flex;
 		gap: 60px;
@@ -11,5 +27,73 @@
 	&__desc {
 		max-width: 465px;
 		margin-top: 24px;
+	}
+	&__body {
+		width: 100%;
+		max-width: 385px;
+	}
+	&__bottom-text {
+		margin-top: 14px;
+
+		color: #5a616c;
+		text-align: center;
+		font-size: 10px;
+		line-height: 16px;
+	}
+}
+
+.status-track {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding-top: 20px;
+	position: relative;
+	z-index: 1;
+
+	&__item {
+		width: 100%;
+	}
+	&__item-img {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-width: 40px;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background: #595d67;
+
+		& img {
+			width: 50%;
+			height: 50%;
+			object-fit: contain;
+			object-position: center;
+		}
+	}
+	&__item-icon {
+		display: flex;
+		margin-top: 20px;
+		margin-left: 4px;
+	}
+	&__item-name {
+		margin-top: 6px;
+		color: rgba(236, 239, 244, 0.61);
+		font-size: 13px;
+		line-height: 118.182%;
+		margin-left: 4px;
+	}
+	&__line {
+		display: flex;
+		position: absolute;
+		top: -4px;
+		left: 10px;
+		width: 80%;
+		height: auto;
+		z-index: -1;
+
+		& svg {
+			width: 100%;
+			height: 100%;
+		}
 	}
 }
