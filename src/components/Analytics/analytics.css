@@ -1,0 +1,19 @@
+.analytics__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 60px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.analytics__heading {
+  width: 100%;
+  max-width: 480px;
+}
+
+.analytics__desc {
+  max-width: 465px;
+  margin-top: 24px;
+}
