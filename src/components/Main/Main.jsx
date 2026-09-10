@@ -5,7 +5,6 @@ import NotFound from '../NotFound/NotFound';
 
 
 export default function Main() {
-
 	const location = useLocation();
 	useEffect(() => {
 		window.scroll({
@@ -17,6 +16,15 @@ export default function Main() {
 	return (
 		<>
 			<main className="main">
+				<div className="leaf-bg">
+					<picture className="leaf-bg__img" >
+						<source media="(max-width: 768px)" srcSet="./img/leaf-bg/img-1_mob.png" />
+						<img src="./img/leaf-bg/img-1.png" alt="img" />
+					</picture>
+					<picture className="leaf-bg__img">
+						<img src="./img/leaf-bg/img-2.png" alt="img" />
+					</picture>
+				</div>
 				<Routes>
 					<Route exact path="/" element={<Home />} />
 					<Route exact path="/analytics" element={<Home />} />

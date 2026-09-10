@@ -90,3 +90,20 @@ body {
   right: unset;
   left: 0px;
 }
+
+@media screen and (max-width: 768px) {
+  .text-80 {
+    font-size: 25px;
+    line-height: 110%;
+  }
+  body {
+    font-size: 13px;
+    line-height: normal;
+  }
+  .section {
+    padding: 20px 0;
+  }
+  .leaf-bg__img:nth-child(2) {
+    display: none;
+  }
+}

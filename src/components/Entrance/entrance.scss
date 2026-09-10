@@ -13,15 +13,15 @@
 	&__tags {
 		display: flex;
 		gap: 5px;
+		margin-top: 27px;
+		color: #545d46;
+		font-size: 14px;
+		line-height: 110%;
 	}
 	&__tag {
 		padding: 7px 19px;
 		border-radius: 13.293px;
 		background: #cded9c;
-		color: #545d46;
-		font-size: 14px;
-		line-height: 110%;
-		margin-top: 27px;
 	}
 	&__title {
 		color: #3e4553;
@@ -72,7 +72,7 @@
 		display: none;
 	}
 	&__preview {
-		display: none;
+		display: flex;
 		width: 100%;
 		height: auto;
 		grid-column: span 2;
@@ -109,56 +109,35 @@
 		align-items: center;
 		text-align: center;
 		margin-top: 20px;
-		color: #78a82c;
-
-		&-text {
-			& div:nth-child(1) {
-				display: none;
-			}
-			& div:nth-child(2) {
-				display: block;
-			}
-		}
 	}
 	&__btn {
 		cursor: pointer;
 	}
+}
 
-	&[data-files="0"] {
-		& .upload {
-			&__load-more {
-				display: none;
-			}
-			&__status {
-				display: none;
-				color: #5a616c;
-				&-text {
-					& div:nth-child(1) {
-						display: block;
-					}
-					& div:nth-child(2) {
-						display: none;
-					}
-				}
-			}
-			&__preview {
-				display: flex;
-			}
+@media screen and (max-width: 768px) {
+	.entrance {
+		&__wrapper {
+			flex-direction: column;
+			gap: 20px;
 		}
-	}
-	&[data-files="1"] {
-		& .upload {
-			&__status {
-				color: #5a616c;
-				&-text {
-					& div:nth-child(1) {
-						display: block;
-					}
-					& div:nth-child(2) {
-						display: none;
-					}
-				}
-			}
+		&__col {
+			max-width: none;
+		}
+		&__body {
+			max-width: none;
+		}
+		&__tags {
+			font-size: 11px;
+			line-height: 110%;
+			margin-top: 10px;
+		}
+		&__tag {
+			padding: 5px 14px;
+		}
+		&__desc {
+			margin-top: 14px;
+			max-width: 285px;
 		}
 	}
 }

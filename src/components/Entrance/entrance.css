@@ -19,16 +19,16 @@
   display: -ms-flexbox;
   display: flex;
   gap: 5px;
+  margin-top: 27px;
+  color: #545d46;
+  font-size: 14px;
+  line-height: 110%;
 }
 
 .entrance__tag {
   padding: 7px 19px;
   border-radius: 13.293px;
   background: #cded9c;
-  color: #545d46;
-  font-size: 14px;
-  line-height: 110%;
-  margin-top: 27px;
 }
 
 .entrance__title {
@@ -92,7 +92,9 @@
 }
 
 .upload__preview {
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   width: 100%;
   height: auto;
   grid-column: span 2;
@@ -154,52 +156,36 @@
           align-items: center;
   text-align: center;
   margin-top: 20px;
-  color: #78a82c;
-}
-
-.upload__status-text div:nth-child(1) {
-  display: none;
-}
-
-.upload__status-text div:nth-child(2) {
-  display: block;
 }
 
 .upload__btn {
   cursor: pointer;
 }
 
-.upload[data-files="0"] .upload__load-more {
-  display: none;
-}
-
-.upload[data-files="0"] .upload__status {
-  display: none;
-  color: #5a616c;
-}
-
-.upload[data-files="0"] .upload__status-text div:nth-child(1) {
-  display: block;
-}
-
-.upload[data-files="0"] .upload__status-text div:nth-child(2) {
-  display: none;
-}
-
-.upload[data-files="0"] .upload__preview {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.upload[data-files="1"] .upload__status {
-  color: #5a616c;
-}
-
-.upload[data-files="1"] .upload__status-text div:nth-child(1) {
-  display: block;
-}
-
-.upload[data-files="1"] .upload__status-text div:nth-child(2) {
-  display: none;
+@media screen and (max-width: 768px) {
+  .entrance__wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 20px;
+  }
+  .entrance__col {
+    max-width: none;
+  }
+  .entrance__body {
+    max-width: none;
+  }
+  .entrance__tags {
+    font-size: 11px;
+    line-height: 110%;
+    margin-top: 10px;
+  }
+  .entrance__tag {
+    padding: 5px 14px;
+  }
+  .entrance__desc {
+    margin-top: 14px;
+    max-width: 285px;
+  }
 }

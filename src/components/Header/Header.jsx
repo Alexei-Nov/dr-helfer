@@ -4,10 +4,10 @@ import './header.css'
 export default function Header() {
 	return (
 		<>
-			<header class="header">
-				<div class="container">
-					<div class="header__wrapper">
-						<div class="header__logo">
+			<header className="header">
+				<div className="container">
+					<div className="header__wrapper">
+						<div className="header__logo">
 							<img src="/img/logo.svg" alt="logo" />
 						</div>
 					</div>
