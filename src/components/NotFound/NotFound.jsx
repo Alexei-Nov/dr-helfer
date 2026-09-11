@@ -11,8 +11,7 @@ export default function NotFound() {
 						<div className="not-found__error">
 							<div className="not-found__error-num">404</div>
 						</div>
-						<div className="not-found__title">страница не найдена</div>
-						<div className="not-found__desc">и не факт что она здесь была</div>
+						<div className="not-found__title text-60">Cтраница не найдена</div>
 						<NavLink to='/' className="not-found__btn btn" >
 							Перейти на главную
 						</NavLink>
