@@ -1,48 +1,61 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-// const loadFromLocalStorage = () => {
-// 	try {
-// 		const stateStr = localStorage.getItem('state');
-// 		return stateStr ? JSON.parse(stateStr) : undefined;
-// 	} catch (e) {
-// 		console.error(e);
-// 		return undefined;
-// 	}
-// };
-
-const defaultState = {
-	preloaderInit: false,
-	pages: [
-		{
-			"page_slug": "shops-chart",
-			"page_title": "Шопс-чарты",
-			"blocks": [
-				{
-					"block_slug": "preloader",
-					"block_state": {}
-				},
-				{
-					"block_slug": "iframe",
-					"block_state": {
-						"src": "https://adbloggers-landing.ktsprod.ru/",
-					}
-				},
-			]
-		},
-	],
-
-}
-
+const initialState = {
+	analysisId: null,
+	status: 'idle',
+	stage: null,
+	progress: 0,
+	elapsedSeconds: 0,
+	result: null,
+	errorCode: null,
+};
 
 const toolkitSlice = createSlice({
-	name: "toolkit",
-	initialState: defaultState,
+	name: 'analysis',
+	initialState,
 	reducers: {
-		setPreloaderInit(state, action) {
-			state.preloaderInit = action.payload
+		setAnalysisId: (state, action) => {
+			state.analysisId = action.payload;
+			state.status = 'processing';
+			state.stage = null;
+			state.progress = 0;
+			state.elapsedSeconds = 0;
+			state.result = null;
+			state.errorCode = null;
 		},
-	}
-})
 
-export default toolkitSlice.reducer
-export const { setPreloaderInit } = toolkitSlice.actions
+		updateProgress: (state, action) => {
+			state.status = action.payload.status;
+			state.stage = action.payload.stage;
+			state.progress = action.payload.progress_percent;
+			state.elapsedSeconds = action.payload.elapsed_seconds;
+		},
+
+		setDone: (state) => {
+			state.status = 'done';
+			state.progress = 100;
+		},
+
+		setFailed: (state, action) => {
+			state.status = 'failed';
+			state.errorCode = action.payload;
+		},
+
+		setResult: (state, action) => {
+			state.result = action.payload;
+		},
+
+		resetAnalysis: () => initialState,
+	},
+});
+
+export const {
+	setAnalysisId,
+	updateProgress,
+	setDone,
+	setFailed,
+	setResult,
+	resetAnalysis,
+} = toolkitSlice.actions;
+
+export default toolkitSlice.reducer;

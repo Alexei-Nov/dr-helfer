@@ -1,22 +1,41 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { setAnalysisId, setFailed } from '../../toolkitRedux/toolkitSlice';
+import { createAnalysis } from '../../api/createAnalysis';
 import './entrance.css'
 
 export default function Entrance() {
 	const [files, setFiles] = useState([]);
+	const [loading, setLoading] = useState(false);
+
 	const navigate = useNavigate();
-	const handleSubmit = (e) => {
+	const dispatch = useDispatch();
+
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (files.length < 2) return;
+		if (files.length < 2 || loading) return;
 
-		const formData = new FormData();
-		files.forEach(file => {
-			formData.append('Фото', file);
-		});
+		try {
+			setLoading(true);
 
-		// отправка formData
-		navigate("/analytics", { replace: true });
+			const formData = new FormData();
+			files.forEach(file => {
+				formData.append('Фото', file);
+			});
+
+			const data = await createAnalysis(formData);
+			dispatch(setAnalysisId(data.analysis_id));
+			navigate('/analytics', { replace: true });
+		} catch (error) {
+			console.error(error);
+			dispatch(setFailed(error.message));
+		} finally {
+			setLoading(false);
+		}
 	};
+
+
 	return (
 		<section className="section entrance">
 			<div className="container">

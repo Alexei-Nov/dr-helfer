@@ -1,9 +1,40 @@
-import React from 'react'
-import './analytics.css'
+import React from 'react';
+import { useSelector } from 'react-redux';
+import './analytics.css';
+
+const statusTrackStages = [
+	{
+		stage: 'photo_quality_check',
+		img: '/img/status/img-1.svg',
+		name: 'Фото получено',
+	},
+	{
+		stage: 'recognition',
+		img: '/img/status/img-2.svg',
+		name: 'Состав распознан',
+	},
+	{
+		stage: 'knowledge_base_match',
+		img: '/img/status/img-3.svg',
+		name: 'Проверяем научные источники',
+	},
+	{
+		stage: 'recommendation',
+		img: '/img/status/img-4.svg',
+		name: 'Готовим рекомендации',
+	},
+	{
+		stage: 'report_assembly',
+		img: '/img/status/img-4.svg',
+		name: 'Готовим отчет',
+	},
+];
 
 export default function Analytics() {
+	const { status, stage, progress, elapsedSeconds, errorCode } = useSelector(state => state.analysis);
+
 	return (
-		<section className='section analytics'>
+		<section className="section analytics">
 			<div className="container">
 				<div className="analytics__wrapper">
 					<div className="analytics__heading">
@@ -12,67 +43,32 @@ export default function Analytics() {
 						</div>
 						<div className="analytics__desc">
 							<p>
-								Анализ может занять несколько минут: мы проверяем состав, дозировки, формы веществ, доказательность и возможные ограничения
+								Анализ может занять несколько минут: мы проверяем
+								состав, дозировки, формы веществ, доказательность
+								и возможные ограничения
 							</p>
 						</div>
 					</div>
+
 					<div className="analytics__body">
+						<div className="analytics__progress">
+							{progress}%
+						</div>
+
 						<div className="analytics__status">
 							<div className="status-track">
-								<div className="status-track__line">
-									<svg width="307" height="81" viewBox="0 0 307 81" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M208.346 53.7098C213.854 74.3672 241.162 102.107 306.321 47.8076" stroke="#94C24A" strokeWidth="1.18043" strokeLinecap="round" />
-										<path d="M0.590332 47.8077C6.099 68.4651 33.4062 96.2052 98.5659 41.9055" stroke="#94C24A" strokeWidth="1.18043" strokeLinecap="round" />
-										<path d="M205.985 26.3142C200.476 5.65668 173.169 -22.0834 108.009 32.2163" stroke="#94C24A" strokeWidth="1.18043" strokeLinecap="round" />
-									</svg>
-								</div>
-								<div className="status-track__item status-track__item_completed">
-									<div className="status-track__item-img">
-										<img src="/img/status/img-1.svg" alt="img" />
-									</div>
-
-									<div className="status-track__item-icon">
-										<img src="/img/status/icon-1.svg" alt="img" />
-									</div>
-									<div className="status-track__item-name">
-										Фото получено
-									</div>
-								</div>
-								<div className="status-track__item status-track__item_processing">
-									<div className="status-track__item-img">
-										<img src="/img/status/img-2.svg" alt="img" />
-									</div>
-									<div className="status-track__item-icon">
-										<img src="/img/status/icon-1.svg" alt="img" />
-									</div>
-									<div className="status-track__item-name">
-										Состав распознан
-									</div>
-								</div>
-								<div className="status-track__item">
-									<div className="status-track__item-img">
-										<img src="/img/status/img-3.svg" alt="img" />
-									</div>
-									<div className="status-track__item-icon">
-										<img src="/img/status/icon-1.svg" alt="img" />
-									</div>
-									<div className="status-track__item-name">
-										Проверяем научные источники
-									</div>
-								</div>
-								<div className="status-track__item">
-									<div className="status-track__item-img">
-										<img src="/img/status/img-4.svg" alt="img" />
-									</div>
-									<div className="status-track__item-icon">
-										<img src="/img/status/icon-1.svg" alt="img" />
-									</div>
-									<div className="status-track__item-name">
-										Готовим отчет
-									</div>
-								</div>
+								{statusTrackStages.map((item, index) => (
+									<StatusItem key={item.stage} item={item} index={index} currentStage={stage} />
+								))}
 							</div>
 						</div>
+
+						{status === 'failed' && (
+							<div className="analytics__error">
+								Ошибка анализа: {errorCode}
+							</div>
+						)}
+
 						<div className="analytics__bottom-text">
 							Можете свернуть страницу, анализ продолжится
 						</div>
@@ -80,5 +76,32 @@ export default function Analytics() {
 				</div>
 			</div>
 		</section>
-	)
+	);
+}
+
+function StatusItem({ item, index, currentStage, }) {
+	const currentIndex = statusTrackStages.findIndex(stage => stage.stage === currentStage);
+	let className = 'status-track__item';
+
+	if (index < currentIndex) {
+		className += ' status-track__item_completed';
+	}
+
+	if (index === currentIndex) {
+		className += ' status-track__item_processing';
+	}
+
+	return (
+		<div className={className}>
+			<div className="status-track__item-img">
+				<img src={item.img} alt="img" />
+			</div>
+			<div className="status-track__item-icon">
+				<img src="/img/status/icon-1.svg" alt="img" />
+			</div>
+			<div className="status-track__item-name">
+				{item.name}
+			</div>
+		</div>
+	);
 }
