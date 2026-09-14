@@ -22,7 +22,7 @@ export default function AnalysisListener() {
 					dispatch(setDone());
 					eventSource.close();
 
-					const response = await fetch(`/api/v1/analyses/${analysisId}`);
+					const response = await fetch(`https://suschik.com/api/v1/analyses/${analysisId}`);
 					if (!response.ok) {
 						throw new Error('Не удалось получить результат');
 					}
