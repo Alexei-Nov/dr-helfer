@@ -50,7 +50,7 @@ const analyticsStatusStages = [
 
 
 export default function Analytics() {
-	const { status, stage, errorCode, result, progress } = useSelector(state => state.toolkit);
+	const { status, stage, errorCode, } = useSelector(state => state.toolkit);
 
 	return (
 		<section className="section analytics">
@@ -119,10 +119,6 @@ export default function Analytics() {
 						</div>
 					</div>
 				</div>
-
-				{result} <br /> <br />
-				{status} <br /> <br />
-				{progress}
 			</div>
 		</section>
 	);
