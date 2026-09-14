@@ -115,22 +115,6 @@
 		&:last-child {
 			border-bottom: 0;
 		}
-
-		&.is-done {
-			& svg {
-				width: 17px;
-				height: 17px;
-				fill: none;
-				stroke: #fff;
-				stroke-width: 2.5;
-				stroke-linecap: round;
-				stroke-linejoin: round;
-			}
-			& .analytics-status__icon {
-				background: #72b328;
-				border-radius: 50%;
-			}
-		}
 		&.is-active .analytics-status__title {
 			color: #5a616c;
 		}
@@ -140,17 +124,14 @@
 	}
 
 	&__icon {
-		width: 28px;
-		height: 28px;
-		flex: 0 0 28px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
 
 	&__number {
-		width: 28px;
-		height: 28px;
+		width: 20px;
+		height: 20px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -173,10 +154,8 @@
 	}
 
 	&__loader {
-		width: 22px;
-		height: 22px;
-		border: 3px dotted #72b328;
-		border-radius: 50%;
+		width: 20px;
+		height: 20px;
 		animation: analyticsLoader 1s linear infinite;
 	}
 }
