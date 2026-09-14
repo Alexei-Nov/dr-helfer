@@ -25,6 +25,7 @@
 	&__heading {
 		width: 100%;
 		max-width: 480px;
+		height: fit-content;
 		position: sticky;
 		top: 190px;
 		left: 0;
@@ -154,5 +155,20 @@
 		font-size: 13px;
 		font-weight: 300;
 		line-height: 15px;
+	}
+}
+
+@media screen and (max-width: 570px) {
+	.result {
+		&__wrapper {
+			flex-direction: column;
+			gap: 30px;
+		}
+		&__heading {
+			position: static;
+		}
+		&__body {
+			max-width: none;
+		}
 	}
 }

@@ -32,6 +32,9 @@
 .result__heading {
   width: 100%;
   max-width: 480px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   position: -webkit-sticky;
   position: sticky;
   top: 190px;
@@ -196,4 +199,20 @@
   font-size: 13px;
   font-weight: 300;
   line-height: 15px;
+}
+
+@media screen and (max-width: 570px) {
+  .result__wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 30px;
+  }
+  .result__heading {
+    position: static;
+  }
+  .result__body {
+    max-width: none;
+  }
 }
