@@ -444,4 +444,11 @@
   .analytics__body {
     max-width: none;
   }
+  .status-track {
+    padding: 0;
+  }
+  .status-track__success-icon svg {
+    width: 100px;
+    height: 100px;
+  }
 }

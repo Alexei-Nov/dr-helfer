@@ -337,4 +337,13 @@
 			max-width: none;
 		}
 	}
+	.status-track {
+		padding: 0;
+		&__success-icon {
+			& svg {
+				width: 100px;
+				height: 100px;
+			}
+		}
+	}
 }
