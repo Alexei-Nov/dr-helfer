@@ -47,7 +47,7 @@ export default function Result() {
 								</div>
 								<div className="result__panel">
 									<div className="result__panel-tag">Отчёт</div>
-									{result.result.source_info.stated_purpose_summary &&
+									{result.source_info.stated_purpose_summary &&
 										<div className="result__panel-item">
 											<div className="result__panel-title">
 												<div className="result__panel-title-num">01</div>
@@ -55,7 +55,7 @@ export default function Result() {
 											</div>
 											<div className="result__panel-body">
 												<div className="result__panel-text">
-													{result.result.source_info.stated_purpose_summary}
+													{result.source_info.stated_purpose_summary}
 												</div>
 											</div>
 										</div>
