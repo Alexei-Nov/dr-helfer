@@ -28,8 +28,8 @@ export default function AnalysisListener() {
 					}
 
 					const result = await response.json();
-					dispatch(setResult(result));
-					console.log('ANALYSIS RESULT:', result);
+					dispatch(setResult(result.result));
+					console.log('ANALYSIS RESULT:', result.result);
 					return;
 				}
 

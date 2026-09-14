@@ -188,7 +188,7 @@
   font-size: 12px;
 }
 
-.analytics-status__title {
+.analytics-status__name {
   font-size: 12px;
   font-weight: 600;
   line-height: 100%;
@@ -207,6 +207,15 @@
   height: 20px;
   -webkit-animation: analyticsLoader 1s linear infinite;
           animation: analyticsLoader 1s linear infinite;
+}
+
+.analytics-status__title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #78a82c;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 11px;
 }
 
 @-webkit-keyframes analyticsLoader {

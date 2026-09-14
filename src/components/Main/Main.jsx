@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "../../pages/Home";
 import NotFound from '../NotFound/NotFound';
 import AnalyticsPage from '../../pages/AnalyticsPage';
+import ResultPage from '../../pages/ResultPage';
 
 
 export default function Main() {
@@ -20,7 +21,7 @@ export default function Main() {
 				<Routes>
 					<Route exact path="/" element={<Home />} />
 					<Route exact path="/analytics" element={<AnalyticsPage />} />
-					<Route exact path="/result" element={<Home />} />
+					<Route exact path="/result" element={<ResultPage />} />
 
 					<Route exact path="*" element={<NotFound />} />
 				</Routes>
