@@ -9,8 +9,8 @@
 		height: 520px;
 		border-radius: 0 0 32px 32px;
 		background: linear-gradient(180deg, #323844 44.35%, #7e7f80 100%);
-		position: absolute;
-		top: -90px;
+		position: fixed;
+		top: 0px;
 		left: 0px;
 		z-index: -2;
 	}
@@ -19,10 +19,15 @@
 		display: flex;
 		gap: 60px;
 		justify-content: space-between;
+		position: relative;
+		z-index: 1;
 	}
 	&__heading {
 		width: 100%;
 		max-width: 480px;
+		position: sticky;
+		top: 190px;
+		left: 0;
 	}
 
 	&__body {
@@ -79,7 +84,14 @@
 		padding: 20px 16px;
 		border-radius: 10px;
 		background: #fff;
+		color: #3e4553;
 		margin-top: 10px;
+
+		font-size: 13px;
+		line-height: 15px;
+	}
+	&__panel-item {
+		margin-top: 30px;
 	}
 }
 

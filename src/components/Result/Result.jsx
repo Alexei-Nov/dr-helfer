@@ -8,14 +8,14 @@ export default function Result() {
 		<section className="section result">
 			<div className="container">
 				<div className="result__wrapper">
-					<div className="analytics__heading">
-						<div className="analytics__title text-60">
+					<div className="result__heading">
+						<div className="result__title text-60">
 							Готовый <br /> отчёт
 						</div>
 					</div>
 					<div className="result__body">
 						{result &&
-							<>
+							<div className="result__body-wrapper">
 								<div className="result-card">
 									<div className="result-card__top">
 										<div className="result-card__img">
@@ -114,8 +114,7 @@ export default function Result() {
 										</div>
 									}
 								</div>
-
-							</>
+							</div>
 						}
 					</div>
 				</div>
