@@ -1,0 +1,114 @@
+.result {
+  position: relative;
+  color: #fff;
+}
+
+.result::after {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 520px;
+  border-radius: 0 0 32px 32px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(44.35%, #323844), to(#7e7f80));
+  background: linear-gradient(180deg, #323844 44.35%, #7e7f80 100%);
+  position: absolute;
+  top: -90px;
+  left: 0px;
+  z-index: -2;
+}
+
+.result__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 60px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.result__heading {
+  width: 100%;
+  max-width: 480px;
+}
+
+.result__body {
+  width: 100%;
+  max-width: 385px;
+}
+
+.result-card {
+  color: #eceff4;
+  border-radius: 10px;
+  background: #4a4e58;
+  padding: 20px 16px;
+}
+
+.result-card__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.result-card__img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 10px;
+  padding-right: 10px;
+  position: relative;
+  z-index: 1;
+  border-right: 1px solid #7a7d84;
+}
+
+.result-card__img img {
+  border-radius: 50%;
+  min-width: 38px;
+  width: 38px;
+  height: 38px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.result-card__name {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.result-card__row {
+  padding: 12px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.result-card__row:not(:last-child):after {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), color-stop(50%, #b3b3b3), to(rgba(0, 0, 0, 0)));
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #b3b3b3 50%, rgba(0, 0, 0, 0) 100%);
+}
+
+.result-card__subtitle {
+  color: #94c24a;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 11px;
+}
+
+.result-card__text {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 15px;
+  margin-top: 7px;
+}

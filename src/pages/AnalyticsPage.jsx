@@ -6,9 +6,9 @@ import { useSelector } from 'react-redux';
 
 export default function AnalyticsPage() {
 	const { analysisId } = useSelector(state => state.toolkit);
-	// if (!analysisId) {
-	// 	return <Navigate to="/" replace />;
-	// }
+	if (!analysisId) {
+		return <Navigate to="/" replace />;
+	}
 
 	return (
 		<>
