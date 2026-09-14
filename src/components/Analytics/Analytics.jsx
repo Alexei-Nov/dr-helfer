@@ -164,21 +164,19 @@ function getStageStatus(itemStage, currentStage, status) {
 function StatusItem({ item, status, stage }) {
 	const { isDone, isActive } = getStageStatus(item.stage, stage, status);
 
-	let className = 'status-track__item';
-	if (isDone) {
-		className += ' status-track__item_completed';
-	}
-	if (isActive) {
-		className += ' status-track__item_processing';
-	}
-
 	return (
-		<div className={className}>
+		<div className={`status-track__item ${isDone ? 'is-done' : ''} ${isActive ? 'is-active' : ''}`}>
 			<div className="status-track__item-img">
 				<img src={item.img} alt="img" />
 			</div>
 			<div className="status-track__item-icon">
-				<img src="/img/status/icon-1.svg" alt="img" />
+				{isDone ? (
+					<img src="/img/status/icon-3.svg" alt="img" />
+				) : isActive ? (
+					<img src="/img/status/icon-2.svg" alt="img" />
+				) : (
+					<img src="/img/status/icon-1.svg" alt="img" />
+				)}
 			</div>
 			<div className="status-track__item-name">
 				{isDone ? item.shortname : item.shortname_processing}
