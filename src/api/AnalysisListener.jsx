@@ -8,7 +8,7 @@ export default function AnalysisListener() {
 
 	useEffect(() => {
 		if (!analysisId) return;
-		const eventSource = new EventSource(`/api/v1/analyses/${analysisId}/stream`);
+		const eventSource = new EventSource(`https://suschik.com/api/v1/analyses/${analysisId}/stream`);
 
 		eventSource.onmessage = async (event) => {
 			try {

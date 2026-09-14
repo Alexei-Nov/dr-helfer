@@ -21,10 +21,12 @@ export default function Entrance() {
 
 			const formData = new FormData();
 			files.forEach(file => {
-				formData.append('Фото', file);
+				formData.append('photos', file);
 			});
 
 			const data = await createAnalysis(formData);
+			console.log('CREATE ANALYSIS:', data);
+
 			dispatch(setAnalysisId(data.analysis_id));
 			navigate('/analytics', { replace: true });
 		} catch (error) {
@@ -59,7 +61,7 @@ export default function Entrance() {
 					</div>
 					<div className="entrance__body">
 						<form className="entrance__form" onSubmit={handleSubmit}>
-							<Upload onChange={setFiles} />
+							<Upload files={files} onChange={setFiles} />
 
 							<button
 								type="submit"
@@ -76,8 +78,7 @@ export default function Entrance() {
 	)
 }
 
-function Upload({ onChange }) {
-	const [files, setFiles] = useState([]);
+function Upload({ files, onChange }) {
 	const [previews, setPreviews] = useState([]);
 	const inputRef = useRef(null);
 
@@ -95,21 +96,15 @@ function Upload({ onChange }) {
 
 		if (!newFiles.length) return;
 
-		setFiles(prev => {
-			const updated = [...prev, ...newFiles];
-			onChange?.(updated);
-			return updated;
-		});
+		const updated = [...files, ...newFiles].slice(0, 3);
+		onChange(updated);
 
 		e.target.value = '';
 	};
 
 	const removeFile = (index) => {
-		setFiles(prev => {
-			const updated = prev.filter((_, i) => i !== index);
-			onChange?.(updated);
-			return updated;
-		});
+		const updated = files.filter((_, i) => i !== index);
+		onChange(updated);
 	};
 
 	const openFileDialog = () => {
@@ -121,7 +116,7 @@ function Upload({ onChange }) {
 			<input
 				ref={inputRef}
 				className="upload__field"
-				name="Фото"
+				name="photos"
 				type="file"
 				multiple
 				accept="image/*"

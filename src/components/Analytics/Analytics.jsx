@@ -48,17 +48,9 @@ const analyticsStatusStages = [
 	},
 ];
 
-const stageOrder = [
-	'photo_quality_check',
-	'recognition',
-	'knowledge_base_match',
-	'recommendation',
-	'report_assembly',
-];
-
 
 export default function Analytics() {
-	const { status, stage, errorCode } = useSelector(state => state.toolkit);
+	const { status, stage, errorCode, result, progress } = useSelector(state => state.toolkit);
 
 	return (
 		<section className="section analytics">
@@ -127,6 +119,10 @@ export default function Analytics() {
 						</div>
 					</div>
 				</div>
+
+				{result} <br /> <br />
+				{status} <br /> <br />
+				{progress}
 			</div>
 		</section>
 	);
@@ -160,13 +156,10 @@ function StatusItem({ item, index, currentStage }) {
 }
 
 function StatusStageItem({ item, index, status, stage }) {
-	const currentStageIndex = stageOrder.findIndex(item => item === stage);
-
+	const currentStageIndex = analyticsStatusStages.findIndex(stage => stage.stage === stage);
 	const isLastStage = item.stage === 'report';
-	const isDone = status === 'done' ||
-		(!isLastStage && index < currentStageIndex) ||
-		(isLastStage && (stage === 'report_assembly' || status === 'done'));
 
+	const isDone = status === 'done' || (!isLastStage && index < currentStageIndex) || (isLastStage && (stage === 'report_assembly' || status === 'done'));
 	const isActive = status === 'processing' && (item.stage === stage || (isLastStage && (stage === 'recommendation' || stage === 'report_assembly')));
 
 	return (
