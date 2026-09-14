@@ -6,9 +6,9 @@ import Result from '../components/Result/Result';
 
 export default function ResultPage() {
 	const { analysisId } = useSelector(state => state.toolkit);
-	// if (!analysisId) {
-	// 	return <Navigate to="/" replace />;
-	// }
+	if (!analysisId) {
+		return <Navigate to="/" replace />;
+	}
 
 	return (
 		<>
