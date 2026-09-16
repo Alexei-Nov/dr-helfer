@@ -67,9 +67,13 @@ export default function Entrance() {
 						<form className="entrance__form" onSubmit={handleSubmit}>
 							<Upload files={files} onChange={setFiles} openFileDialog={openFileDialog} inputRef={inputRef} setInputRef={setInputRef} />
 							{files.length > 0 ? (
-								<div className={`entrance__btn btn btn_wide ${files.length < 2 ? 'btn_disabled' : ''}`} disabled={files.length < 2} >
+								<button
+									type='submit'
+									className={`entrance__btn btn btn_wide ${files.length < 2 ? 'btn_disabled' : ''}`}
+									disabled={files.length < 2}
+								>
 									Проанализировать БАД
-								</div>
+								</button>
 							) : (
 								<div className={`entrance__btn btn btn_wide`}
 									onClick={() => { openFileDialog(inputRef) }}
