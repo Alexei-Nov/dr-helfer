@@ -143,15 +143,17 @@ function Upload({ files, onChange }) {
 								</div>
 							))}
 
-							<div className="upload__btn upload__load-more" onClick={openFileDialog} >
-								<div className="upload__load-more-icon">
-									<img src="/img/entrance/load-more.svg" alt="img" />
-								</div>
+							{files.length < 3 &&
+								<div className="upload__btn upload__load-more" onClick={openFileDialog} >
+									<div className="upload__load-more-icon">
+										<img src="/img/entrance/load-more.svg" alt="img" />
+									</div>
 
-								<div className="upload__load-more-text">
-									Добавить еще минимум <span>1</span> фото
+									<div className="upload__load-more-text">
+										Добавить еще <span>1</span> фото
+									</div>
 								</div>
-							</div>
+							}
 
 						</div>
 						<div className="upload__status">
