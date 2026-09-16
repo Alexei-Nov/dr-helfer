@@ -7,6 +7,7 @@ import './entrance.css'
 
 export default function Entrance() {
 	const [files, setFiles] = useState([]);
+	const [inputRef, setInputRef] = useState(null);
 	const [loading, setLoading] = useState(false);
 
 	const navigate = useNavigate();
@@ -37,6 +38,9 @@ export default function Entrance() {
 		}
 	};
 
+	const openFileDialog = (ref) => {
+		ref.current?.click();
+	};
 
 	return (
 		<section className="section entrance">
@@ -49,7 +53,7 @@ export default function Entrance() {
 						</div>
 						<div className="entrance__desc">
 							<p>
-								Сделайте минимум 2 фото: лицевой стороны и состава или
+								Сделайте 1-3 фото: лицевой стороны и состава или
 								загрузите из галереи. Весь текст должен быть виден
 							</p>
 						</div>
@@ -61,15 +65,18 @@ export default function Entrance() {
 					</div>
 					<div className="entrance__body">
 						<form className="entrance__form" onSubmit={handleSubmit}>
-							<Upload files={files} onChange={setFiles} />
-
-							<button
-								type="submit"
-								className={`entrance__btn btn btn_wide ${files.length < 2 ? 'btn_disabled' : ''}`}
-								disabled={files.length < 2}
-							>
-								Проанализировать БАД
-							</button>
+							<Upload files={files} onChange={setFiles} openFileDialog={openFileDialog} inputRef={inputRef} setInputRef={setInputRef} />
+							{files.length > 0 ? (
+								<div className={`entrance__btn btn btn_wide ${files.length < 2 ? 'btn_disabled' : ''}`} disabled={files.length < 2} >
+									Проанализировать БАД
+								</div>
+							) : (
+								<div className={`entrance__btn btn btn_wide`}
+									onClick={() => { openFileDialog(inputRef) }}
+								>
+									Загрузить фото
+								</div>
+							)}
 						</form>
 					</div>
 				</div>
@@ -78,13 +85,14 @@ export default function Entrance() {
 	)
 }
 
-function Upload({ files, onChange }) {
+function Upload({ files, onChange, openFileDialog, inputRef, setInputRef }) {
 	const [previews, setPreviews] = useState([]);
-	const inputRef = useRef(null);
+	const currentInputRef = useRef(null);
 
 	useEffect(() => {
 		const urls = files.map(file => URL.createObjectURL(file));
 		setPreviews(urls);
+		setInputRef(currentInputRef)
 
 		return () => {
 			urls.forEach(url => URL.revokeObjectURL(url));
@@ -107,14 +115,11 @@ function Upload({ files, onChange }) {
 		onChange(updated);
 	};
 
-	const openFileDialog = () => {
-		inputRef.current?.click();
-	};
 
 	return (
 		<div className="upload">
 			<input
-				ref={inputRef}
+				ref={currentInputRef}
 				className="upload__field"
 				name="photos"
 				type="file"
@@ -125,7 +130,7 @@ function Upload({ files, onChange }) {
 
 			<div className="upload__wrapper">
 				{files.length == 0 &&
-					<div className="upload__btn upload__preview" onClick={openFileDialog} >
+					<div className="upload__btn upload__preview" onClick={() => { openFileDialog(inputRef) }} >
 						<img src="./img/upload/img-1.png" alt="img" />
 					</div>
 				}
@@ -173,11 +178,12 @@ function Upload({ files, onChange }) {
 								</div>
 
 								<div className="upload__status-text">
-									{files.length < 2 ? (
+									{/* {files.length < 2 ? (
 										<div>Добавьте еще минимум 1 фото</div>
 									) : (
 										<div style={{ color: '#78a82c' }}>Можно анализировать</div>
-									)}
+									)} */}
+									<div style={{ color: '#78a82c' }}>Можно анализировать</div>
 								</div>
 							</div>
 						</div>

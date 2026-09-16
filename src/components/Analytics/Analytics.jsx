@@ -203,14 +203,6 @@ function StatusStageItem({ item, status, stage }) {
 			<div className="analytics-status__name">
 				{isDone ? item.name : item.name_processing}
 			</div>
-
-			{!isActive && (
-				<div className="analytics-status__arrow">
-					<svg xmlns="http://www.w3.org/2000/svg" width="9" height="5" viewBox="0 0 9 5" fill="none">
-						<path d="M0.5 0.5L4.5 3.88678L8.5 0.5" stroke="#A1A1A1" strokeLinecap="round" />
-					</svg>
-				</div>
-			)}
 		</div>
 	);
 }

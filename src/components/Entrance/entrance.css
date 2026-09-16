@@ -42,6 +42,7 @@
 
 .entrance__btn {
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .upload__img {
