@@ -121,8 +121,8 @@ export default function Result() {
                         Научные источники
                       </div>
                       <div className="result__panel-body">
-                        {result.source_info.component_sources.map(item => (
-                          <a href={item.source_url} className="result__link" target='_blank' rel="noopener noreferrer">{item.source_url}</a>
+                        {result.source_info.component_sources.map((item, index) => (
+                          <a href={item.source_url} className="result__link" target='_blank' rel="noopener noreferrer">Ссылка {index + 1}</a>
                         ))}
                       </div>
                     </div>
