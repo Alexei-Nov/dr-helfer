@@ -5,15 +5,15 @@ import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 export default function AnalyticsPage() {
-	const { analysisId } = useSelector(state => state.toolkit);
-	if (!analysisId) {
-		return <Navigate to="/" replace />;
-	}
+  const { analysisId } = useSelector(state => state.toolkit);
+  if (!analysisId) {
+    return <Navigate to="/" replace />;
+  }
 
-	return (
-		<>
-			<TitleAndMetaTags />
-			<Analytics />
-		</>
-	)
+  return (
+    <>
+      <TitleAndMetaTags />
+      <Analytics />
+    </>
+  )
 }

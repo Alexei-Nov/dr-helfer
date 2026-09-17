@@ -1,0 +1,26 @@
+.footer {
+  margin-top: auto;
+  padding: 10px 0;
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: flex-end;
+  }
+  &__link {
+    display: flex;
+    width: fit-content;
+    color: var(--, #5a616c);
+    opacity: 0.6;
+    text-decoration: underline;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .footer {
+    &__row {
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+}

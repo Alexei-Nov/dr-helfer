@@ -5,15 +5,15 @@ import { useSelector } from 'react-redux';
 import Result from '../components/Result/Result';
 
 export default function ResultPage() {
-	const { analysisId } = useSelector(state => state.toolkit);
-	if (!analysisId) {
-		return <Navigate to="/" replace />;
-	}
+  const { analysisId } = useSelector(state => state.toolkit);
+  if (!analysisId) {
+    // return <Navigate to="/" replace />;
+  }
 
-	return (
-		<>
-			<TitleAndMetaTags />
-			<Result />
-		</>
-	)
+  return (
+    <>
+      <TitleAndMetaTags />
+      <Result />
+    </>
+  )
 }

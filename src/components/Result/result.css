@@ -2,53 +2,44 @@
   position: relative;
   color: #fff;
 }
-
 .result::after {
   display: block;
   content: "";
   width: 100%;
   height: 520px;
   border-radius: 0 0 32px 32px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(44.35%, #323844), to(#7e7f80));
   background: linear-gradient(180deg, #323844 44.35%, #7e7f80 100%);
   position: fixed;
   top: 0px;
   left: 0px;
   z-index: -2;
 }
-
 .result__wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  gap: 60px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: column;
+  gap: 40px;
   position: relative;
   z-index: 1;
 }
-
+.result__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+}
 .result__heading {
   width: 100%;
   max-width: 480px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  position: -webkit-sticky;
   position: sticky;
   top: 190px;
   left: 0;
 }
-
 .result__body {
   width: 100%;
-  max-width: 385px;
 }
-
 .result__panel-title {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   color: #3e4553;
   font-size: 16px;
@@ -56,27 +47,18 @@
   line-height: 18px;
   margin-bottom: 16px;
 }
-
 .result__panel-title-num {
   padding-right: 10px;
   margin-right: 10px;
   border-right: 1px solid #b9baba;
 }
-
 .result__link {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
-
 .result__panel-tag {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   margin-bottom: 30px;
@@ -89,16 +71,10 @@
   border-radius: 17px;
   background: #94c24a;
 }
-
 .result__panel-warning-icon {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 .result__panel-warning {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   gap: 10px;
   padding: 14px;
@@ -110,7 +86,6 @@
   line-height: 14px;
   margin: 12px 0;
 }
-
 .result__panel {
   padding: 20px 16px;
   border-radius: 10px;
@@ -120,9 +95,11 @@
   font-size: 13px;
   line-height: 15px;
 }
-
 .result__panel-item {
   margin-top: 30px;
+}
+.result__btn {
+  width: 328px;
 }
 
 .result-card {
@@ -131,19 +108,11 @@
   background: #4a4e58;
   padding: 20px 16px;
 }
-
 .result-card__top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .result-card__img {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin-right: 10px;
   padding-right: 10px;
@@ -151,7 +120,6 @@
   z-index: 1;
   border-right: 1px solid #7a7d84;
 }
-
 .result-card__img img {
   border-radius: 50%;
   min-width: 38px;
@@ -162,19 +130,16 @@
   -o-object-position: center;
      object-position: center;
 }
-
 .result-card__name {
   font-size: 16px;
   font-weight: 600;
   line-height: 18px;
 }
-
 .result-card__row {
   padding: 12px 0;
   position: relative;
   z-index: 1;
 }
-
 .result-card__row:not(:last-child):after {
   display: block;
   content: "";
@@ -183,10 +148,8 @@
   position: absolute;
   bottom: 0px;
   left: 0px;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), color-stop(50%, #b3b3b3), to(rgba(0, 0, 0, 0)));
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #b3b3b3 50%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(179, 179, 179) 50%, rgba(0, 0, 0, 0) 100%);
 }
-
 .result-card__subtitle {
   color: #94c24a;
   font-size: 12px;
@@ -194,7 +157,6 @@
   line-height: 11px;
   margin-bottom: 7px;
 }
-
 .result-card__text {
   font-size: 13px;
   font-weight: 300;
@@ -203,10 +165,7 @@
 
 @media screen and (max-width: 570px) {
   .result__wrapper {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
     gap: 30px;
   }
   .result__heading {
@@ -214,5 +173,12 @@
   }
   .result__body {
     max-width: none;
+  }
+  .result__top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .result__btn {
+    width: 100%;
   }
 }
