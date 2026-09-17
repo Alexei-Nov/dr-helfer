@@ -2,6 +2,7 @@ import React from 'react'
 import './result.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { setAnalysisId } from '../../toolkitRedux/toolkitSlice';
+import { NavLink } from 'react-router-dom';
 
 export default function Result() {
   const { result } = useSelector(state => state.toolkit);
@@ -22,7 +23,9 @@ export default function Result() {
                 Готовый <br /> отчёт
               </div>
             </div>
-            <div className="result__btn btn text-16 fw-500" onClick={() => startNewAnalysis} >Начать новый анализ</div>
+            <NavLink to='/' className="result__btn btn text-16 fw-500" onClick={() => startNewAnalysis}>
+              Начать новый анализ
+            </NavLink>
           </div>
           <div className="result__body">
             {result &&

@@ -32,9 +32,6 @@
   max-width: 480px;
   height: -moz-fit-content;
   height: fit-content;
-  position: sticky;
-  top: 190px;
-  left: 0;
 }
 .result__body {
   width: 100%;
