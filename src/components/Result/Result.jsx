@@ -5,9 +5,8 @@ import { setAnalysisId } from '../../toolkitRedux/toolkitSlice';
 import { NavLink } from 'react-router-dom';
 
 export default function Result() {
-  const { result } = useSelector(state => state.toolkit);
+  const { result, resultComparison } = useSelector(state => state.toolkit);
   const dispatch = useDispatch();
-
 
   const startNewAnalysis = () => {
     dispatch(setAnalysisId(null));
@@ -135,10 +134,42 @@ export default function Result() {
                       }
                     </div>
                   </div>
+                  <div className="result__panel-item">
+                    <div className="result__panel-title">
+                      <div className="result__panel-title-num">02</div>
+                      Полное сравнение составов
+                    </div>
+                    <div className="result__panel-body">
+                      <table className='result__panel-table'>
+                        <thead>
+                          <tr>
+                            <th>Вещество</th>
+                            <th>Тип</th>
+                            <th>Верхний безопасный предел потребления, мг</th>
+                            <th>Суточная доза текущего товара, мг</th>
+                            <th>Суточная доза рекомендованного товара, мг</th>
+                            <th>Заключение</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {resultComparison.full_comparison_table.map(item => (
+                            <tr>
+                              <td>{item.ingredient}</td>
+                              <td>{item.characteristic}</td>
+                              <td>{item.upper_limit_mg}</td>
+                              <td>{item.current_product_dose_mg}</td>
+                              <td>{item.recommended_product_dose_mg}</td>
+                              <td>{item.conclusion}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                   {result.source_info.component_sources &&
                     <div className="result__panel-item">
                       <div className="result__panel-title">
-                        <div className="result__panel-title-num">02</div>
+                        <div className="result__panel-title-num">03</div>
                         Научные источники
                       </div>
                       <div className="result__panel-body">
