@@ -117,8 +117,7 @@ export default function Result() {
                     <div className="result__panel-body">
                       {recomendedProduct &&
                         <>
-                          <div className="result__panel-product-name green-text">{recomendedProduct.name}</div>
-                          <div className="result__panel-product-company">{recomendedProduct.manufacturer}</div>
+                          <div className="result__panel-product-name green-text">{recomendedProduct.name} ({recomendedProduct.manufacturer})</div>
                           {recomendedProduct.stated_purpose &&
                             <div className="result__panel-product-desc">
                               {recomendedProduct.stated_purpose}
