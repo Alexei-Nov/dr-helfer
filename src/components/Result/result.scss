@@ -58,7 +58,9 @@
   &__link {
     display: flex;
     width: fit-content;
+    max-width: 100%;
     text-decoration: underline;
+    overflow: hidden;
   }
   &__panel-tag {
     display: flex;

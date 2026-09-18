@@ -53,7 +53,9 @@
   display: flex;
   width: -moz-fit-content;
   width: fit-content;
+  max-width: 100%;
   text-decoration: underline;
+  overflow: hidden;
 }
 .result__panel-tag {
   display: flex;
