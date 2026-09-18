@@ -5,7 +5,7 @@ import { setAnalysisId } from '../../toolkitRedux/toolkitSlice';
 import { NavLink } from 'react-router-dom';
 
 export default function Result() {
-  const { result, resultComparison } = useSelector(state => state.toolkit);
+  const { result, resultComparison, recomendedProduct } = useSelector(state => state.toolkit);
   const dispatch = useDispatch();
 
   const startNewAnalysis = () => {
@@ -115,10 +115,24 @@ export default function Result() {
                       Рекомендуемый продукт
                     </div>
                     <div className="result__panel-body">
-                      {result.recommendation.recommendation_text &&
-                        <div className="result__panel-text">
-                          {result.recommendation.recommendation_text}
-                        </div>
+                      {recomendedProduct &&
+                        <>
+                          <div className="result__panel-product-name green-text">{recomendedProduct.name}</div>
+                          <div className="result__panel-product-company">{recomendedProduct.manufacturer}</div>
+                          {recomendedProduct.stated_purpose &&
+                            <div className="result__panel-product-desc">
+                              {recomendedProduct.stated_purpose}
+                            </div>
+                          }
+                          <div className="result__panel-product-list">
+                            <p className='green-text'>Состав:</p>
+                            <ul>
+                              {recomendedProduct?.composition && recomendedProduct.composition.map(item => (
+                                <li>{item.name}({item.form}) - {item.dosage}{item.unit}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </>
                       }
                       {result.recommendation.data_completeness_warning &&
                         <div className="result__panel-warning">
@@ -168,10 +182,21 @@ export default function Result() {
                       </div>
                     </div>
                   </div>
+                  <div className="result__panel-item">
+                    <div className="result__panel-title">
+                      <div className="result__panel-title-num">03</div>
+                      Где купить рекомендуемый продукт
+                    </div>
+                    <div className="result__panel-body">
+                      {recomendedProduct && recomendedProduct?.marketplace_links &&
+                        <a href={recomendedProduct.marketplace_links?.ozon} className='result__panel-product-btn btn' target="_blank" rel="noopener noreferrer">Ozon</a>
+                      }
+                    </div>
+                  </div>
                   {result.source_info.component_sources &&
                     <div className="result__panel-item">
                       <div className="result__panel-title">
-                        <div className="result__panel-title-num">03</div>
+                        <div className="result__panel-title-num">04</div>
                         Научные источники
                       </div>
                       <div className="result__panel-body">

@@ -128,6 +128,16 @@
       }
     }
   }
+  &__panel-product-desc {
+    margin-top: 16px;
+  }
+  &__panel-product-list {
+    margin-top: 20px;
+  }
+  &__panel-product-btn {
+    width: 100%;
+    max-width: 450px;
+  }
 }
 
 .result-card {

@@ -123,6 +123,16 @@
 .result__panel-table td:nth-child(even) {
   background-color: #eef4e4;
 }
+.result__panel-product-desc {
+  margin-top: 16px;
+}
+.result__panel-product-list {
+  margin-top: 20px;
+}
+.result__panel-product-btn {
+  width: 100%;
+  max-width: 450px;
+}
 
 .result-card {
   color: #eceff4;

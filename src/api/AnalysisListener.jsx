@@ -37,11 +37,9 @@ export default function AnalysisListener() {
           dispatch(setResultComparison(dataComparison));
           console.log('COMPARISON RESULT:', dataComparison);
 
-          result.result.recommendation.recommended_products.forEach(product => {
-            const dataRecomendedProduct = getRecomendedProduct(product.product_id)
-            dispatch(setRecomendedProduct(dataRecomendedProduct));
-            console.log('RECOMENDED PRODUCT:', dataRecomendedProduct);
-          });
+          const dataRecomendedProduct = await getRecomendedProduct(result.result.recommendation.recommended_products[0].product_id)
+          dispatch(setRecomendedProduct(dataRecomendedProduct));
+          console.log('RECOMENDED PRODUCT:', dataRecomendedProduct);
 
           return;
         }
