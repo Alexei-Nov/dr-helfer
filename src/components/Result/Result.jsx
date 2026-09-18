@@ -140,30 +140,32 @@ export default function Result() {
                       Полное сравнение составов
                     </div>
                     <div className="result__panel-body">
-                      <table className='result__panel-table'>
-                        <thead>
-                          <tr>
-                            <th>Вещество</th>
-                            <th>Тип</th>
-                            <th>Верхний безопасный предел потребления, мг</th>
-                            <th>Суточная доза текущего товара, мг</th>
-                            <th>Суточная доза рекомендованного товара, мг</th>
-                            <th>Заключение</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {resultComparison.full_comparison_table.map(item => (
+                      <div className='result__panel-table'>
+                        <table>
+                          <thead>
                             <tr>
-                              <td>{item.ingredient}</td>
-                              <td>{item.characteristic}</td>
-                              <td>{item.upper_limit_mg}</td>
-                              <td>{item.current_product_dose_mg}</td>
-                              <td>{item.recommended_product_dose_mg}</td>
-                              <td>{item.conclusion}</td>
+                              <th>Вещество</th>
+                              <th>Тип</th>
+                              <th>Верхний безопасный предел потребления, мг</th>
+                              <th>Суточная доза текущего товара, мг</th>
+                              <th>Суточная доза рекомендованного товара, мг</th>
+                              <th>Заключение</th>
                             </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                          </thead>
+                          <tbody>
+                            {resultComparison.full_comparison_table.map(item => (
+                              <tr>
+                                <td>{item.ingredient}</td>
+                                <td>{item.characteristic}</td>
+                                <td>{item.upper_limit_mg}</td>
+                                <td>{item.current_product_dose_mg}</td>
+                                <td>{item.recommended_product_dose_mg}</td>
+                                <td>{item.conclusion}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   </div>
                   {result.source_info.component_sources &&
