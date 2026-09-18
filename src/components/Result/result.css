@@ -53,6 +53,7 @@
   display: flex;
   width: -moz-fit-content;
   width: fit-content;
+  text-decoration: underline;
 }
 .result__panel-tag {
   display: flex;

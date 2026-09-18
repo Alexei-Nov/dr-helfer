@@ -43,10 +43,10 @@ export default function Result() {
                       <div className="result-card__text">{result.analysis.component_facts.health_effect_description}</div>
                     </div>
                   }
-                  {result.source_info.stated_purpose_summary &&
+                  {result.source_info.stated_purpose &&
                     <div className="result-card__row">
                       <div className="result-card__subtitle">Назначение</div>
-                      <div className="result-card__text">{result.source_info.stated_purpose_summary}</div>
+                      <div className="result-card__text">{result.source_info.stated_purpose}</div>
                     </div>
                   }
                   {result.source_info.raw_composition &&
@@ -61,30 +61,51 @@ export default function Result() {
                 </div>
                 <div className="result__panel">
                   <div className="result__panel-tag">Отчёт</div>
-                  {result.source_info.stated_purpose_summary &&
-                    <div className="result__panel-item">
-                      <div className="result__panel-title">
-                        <div className="result__panel-title-num">01</div>
-                        Назначение продукта
-                      </div>
-                      <div className="result__panel-body">
-                        <div className="result__panel-text">
-                          {result.source_info.stated_purpose_summary}
-                        </div>
+                  <div className="result__panel-item">
+                    <div className="result__panel-title">
+                      <div className="result__panel-title-num">01</div>
+                      Назначение продукта
+                    </div>
+                    <div className="result__panel-body">
+                      <div className="result__panel-text">
+                        {result.source_info.stated_purpose_summary}
                       </div>
                     </div>
-                  }
-                  {result.analysis.composition_summary &&
-                    <div className="result__panel-item">
-                      <div className="result__panel-title">
-                        <div className="result__panel-title-num">02</div>
-                        Вывод о составе продукта
-                      </div>
-                      <div className="result__panel-body">
-                        {result.analysis.composition_summary}
+                  </div>
+                  <div className="result__panel-item">
+                    <div className="result__panel-title">
+                      <div className="result__panel-title-num">02</div>
+                      Вывод о составе продукта
+                    </div>
+                    <div className="result__panel-body">
+                      <div className="result__panel-text">
+                        <p>{result.analysis.summary_good}</p>
+                        <br />
+                        <p className='green-text'>Список неоценённых веществ</p>
+                        {result.analysis.unassessed_components.map((item, index) => (
+                          <p>{item.component_name} ({item.reason})</p>
+                        ))}
                       </div>
                     </div>
-                  }
+                  </div>
+                  <div className="result__panel-item">
+                    <div className="result__panel-title">
+                      <div className="result__panel-title-num">03</div>
+                      Дозировки
+                    </div>
+                    <div className="result__panel-body">
+                      <div className="result__panel-text">
+                        {result.analysis.component_facts.map((item, index) => (
+                          <>
+                            <p className='green-text'>{item.component_name} ({item.category})</p>
+                            <p>Дневная дозировка: {item.daily_dosage} {item.unit}</p>
+                            <p>Оптимальная дозировка: {item.optimal_dosage.value} {item.optimal_dosage.unit}</p>
+                            <p>Максимально допустимая дозировка: {item.max_safe_dosage.value} {item.max_safe_dosage.unit}</p> <br />
+                          </>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="result__panel">
                   <div className="result__panel-tag">РЕКОМЕНДАЦИЯ</div>
@@ -121,9 +142,15 @@ export default function Result() {
                         Научные источники
                       </div>
                       <div className="result__panel-body">
-                        {result.source_info.component_sources.map((item, index) => (
-                          <a href={item.source_url} className="result__link" target='_blank' rel="noopener noreferrer">Ссылка {index + 1}</a>
-                        ))}
+                        <div className="result__panel-text content">
+                          <ol>
+                            {result.source_info.component_sources.map((item, index) => (
+                              <li>
+                                {item.component_name}. {item.type} - <a href={item.source_url} className="result__link" target='_blank' rel="noopener noreferrer">{item.source_url}</a>
+                              </li>
+                            ))}
+                          </ol>
+                        </div>
                       </div>
                     </div>
                   }

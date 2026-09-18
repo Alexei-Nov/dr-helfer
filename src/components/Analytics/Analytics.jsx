@@ -138,21 +138,22 @@ export default function Analytics() {
 									<div className="analytics-card__tag">Состав не найден</div>
 								</div>
 							</div> */}
+              {!result &&
+                <div className="analytics-advice">
+                  <div className="analytics-advice__wrapper">
+                    <div className="analytics-advice__icon">
+                      <svg width="79" height="79" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="78.4" height="78.4" rx="39.2" fill="white" />
+                        <rect x="7.7002" y="7.69995" width="63" height="63" rx="31.5" fill="white" />
+                        <rect x="7.7002" y="7.69995" width="63" height="63" rx="31.5" stroke="#78A82C" />
+                        <path d="M35.2002 56.2H43.2002M39.2002 24.2V22.2M49.2002 28.2L51.2002 26.2M29.2002 28.2L27.2002 26.2M49.2002 46.2L51.2002 48.2M29.2002 46.2L27.2002 48.2M25.2002 36.2H23.2002M55.2002 36.2H53.2002M39.2002 29.2C41.2308 29.1987 43.2022 29.8842 44.7939 31.145C46.3857 32.4059 47.5043 34.168 47.968 36.1449C48.4316 38.1219 48.2131 40.1976 47.3479 42.0347C46.4827 43.8718 45.0216 45.3622 43.2022 46.264L43.2002 48.2C43.2002 49.2608 42.7788 50.2782 42.0286 51.0284C41.2785 51.7785 40.2611 52.2 39.2002 52.2C38.1393 52.2 37.1219 51.7785 36.3718 51.0284C35.6216 50.2782 35.2002 49.2608 35.2002 48.2V46.264C33.3809 45.3623 31.92 43.872 31.0547 42.0351C30.1895 40.1983 29.9708 38.1228 30.4342 36.1459C30.8976 34.1691 32.0159 32.407 33.6073 31.146C35.1987 29.885 37.1697 29.1992 39.2002 29.2Z" stroke="#78A82C" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
 
-              <div className="analytics-advice">
-                <div className="analytics-advice__wrapper">
-                  <div className="analytics-advice__icon">
-                    <svg width="79" height="79" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="78.4" height="78.4" rx="39.2" fill="white" />
-                      <rect x="7.7002" y="7.69995" width="63" height="63" rx="31.5" fill="white" />
-                      <rect x="7.7002" y="7.69995" width="63" height="63" rx="31.5" stroke="#78A82C" />
-                      <path d="M35.2002 56.2H43.2002M39.2002 24.2V22.2M49.2002 28.2L51.2002 26.2M29.2002 28.2L27.2002 26.2M49.2002 46.2L51.2002 48.2M29.2002 46.2L27.2002 48.2M25.2002 36.2H23.2002M55.2002 36.2H53.2002M39.2002 29.2C41.2308 29.1987 43.2022 29.8842 44.7939 31.145C46.3857 32.4059 47.5043 34.168 47.968 36.1449C48.4316 38.1219 48.2131 40.1976 47.3479 42.0347C46.4827 43.8718 45.0216 45.3622 43.2022 46.264L43.2002 48.2C43.2002 49.2608 42.7788 50.2782 42.0286 51.0284C41.2785 51.7785 40.2611 52.2 39.2002 52.2C38.1393 52.2 37.1219 51.7785 36.3718 51.0284C35.6216 50.2782 35.2002 49.2608 35.2002 48.2V46.264C33.3809 45.3623 31.92 43.872 31.0547 42.0351C30.1895 40.1983 29.9708 38.1228 30.4342 36.1459C30.8976 34.1691 32.0159 32.407 33.6073 31.146C35.1987 29.885 37.1697 29.1992 39.2002 29.2Z" stroke="#78A82C" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-
+                    </div>
+                    <div className="analytics-advice__text text-16">{adviceText}</div>
                   </div>
-                  <div className="analytics-advice__text text-16">{adviceText}</div>
                 </div>
-              </div>
+              }
 
               <div className="analytics-status">
                 {result &&
