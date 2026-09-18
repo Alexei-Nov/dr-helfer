@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateProgress, setDone, setFailed, setResult, setResultComparison, } from '../toolkitRedux/toolkitSlice';
+import { updateProgress, setDone, setFailed, setResult, setResultComparison, setRecomendedProduct, } from '../toolkitRedux/toolkitSlice';
 import { getComparison } from './getComparison';
+import { getRecomendedProduct } from './getRecomendedProduct';
 
 export default function AnalysisListener() {
   const dispatch = useDispatch();
@@ -35,6 +36,12 @@ export default function AnalysisListener() {
           const dataComparison = await getComparison(analysisId)
           dispatch(setResultComparison(dataComparison));
           console.log('COMPARISON RESULT:', dataComparison);
+
+          result.result.recommendation.recommended_products.forEach(product => {
+            const dataRecomendedProduct = getRecomendedProduct(product.product_id)
+            dispatch(setRecomendedProduct(dataRecomendedProduct));
+            console.log('RECOMENDED PRODUCT:', dataRecomendedProduct);
+          });
 
           return;
         }

@@ -8,6 +8,7 @@ const initialState = {
   elapsedSeconds: 0,
   result: null,
   resultComparison: null,
+  recomendedProduct: [],
   errorCode: null,
 };
 
@@ -23,6 +24,7 @@ const toolkitSlice = createSlice({
       state.elapsedSeconds = 0;
       state.result = null;
       state.resultComparison = null;
+      state.recomendedProduct = [];
       state.errorCode = null;
     },
 
@@ -51,6 +53,10 @@ const toolkitSlice = createSlice({
       state.resultComparison = action.payload;
     },
 
+    setRecomendedProduct: (state, action) => {
+      state.recomendedProduct = [...state.recomendedProduct, action.payload];
+    },
+
     resetAnalysis: () => initialState,
   },
 });
@@ -62,6 +68,7 @@ export const {
   setFailed,
   setResult,
   setResultComparison,
+  setRecomendedProduct,
   resetAnalysis,
 } = toolkitSlice.actions;
 

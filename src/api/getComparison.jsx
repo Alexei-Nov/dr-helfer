@@ -5,7 +5,7 @@ export async function getComparison(id) {
 
   if (!response.ok) {
     const error = await response.json().catch(() => null);
-    throw new Error(error?.detail || error?.message || 'Не удалось создать анализ');
+    throw new Error(error?.detail || error?.message || 'Не удалось создать сравнение');
   }
 
   return response.json();
