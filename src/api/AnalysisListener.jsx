@@ -37,7 +37,9 @@ export default function AnalysisListener() {
           dispatch(setResultComparison(dataComparison));
           console.log('COMPARISON RESULT:', dataComparison);
 
-          const dataRecomendedProduct = await getRecomendedProduct(result.result.recommendation.recommended_products[0].product_id)
+          if (result.result.recommendation.recommended_products.length == 0) return
+
+          const dataRecomendedProduct = await getRecomendedProduct(result.result.recommendation.recommended_products[0]?.product_id)
           dispatch(setRecomendedProduct(dataRecomendedProduct));
           console.log('RECOMENDED PRODUCT:', dataRecomendedProduct);
 

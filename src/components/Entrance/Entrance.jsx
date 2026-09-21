@@ -68,8 +68,8 @@ export default function Entrance() {
               {files.length > 0 ? (
                 <button
                   type='submit'
-                  className={`entrance__btn btn btn_wide ${files.length < 2 ? 'btn_disabled' : ''}`}
-                  disabled={files.length < 2}
+                  className={`entrance__btn btn btn_wide ${files.length < 1 ? 'btn_disabled' : ''}`}
+                  disabled={files.length < 1}
                 >
                   Проанализировать БАД
                 </button>
@@ -152,7 +152,7 @@ function Upload({ files, onChange, openFileDialog, inputRef, setInputRef }) {
               ))}
 
               {files.length < 3 &&
-                <div className="upload__btn upload__load-more" onClick={openFileDialog} >
+                <div className="upload__btn upload__load-more" onClick={() => { openFileDialog(inputRef) }} >
                   <div className="upload__load-more-icon">
                     <img src="/img/entrance/load-more.svg" alt="img" />
                   </div>

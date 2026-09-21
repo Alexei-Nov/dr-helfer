@@ -61,6 +61,7 @@
     max-width: 100%;
     text-decoration: underline;
     overflow: hidden;
+    overflow-wrap: anywhere;
   }
   &__panel-tag {
     display: flex;

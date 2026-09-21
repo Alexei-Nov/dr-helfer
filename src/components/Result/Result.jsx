@@ -34,8 +34,14 @@ export default function Result() {
                     <div className="result-card__img">
                       <img src="/img/upload/img-1.png" alt="img" />
                     </div>
-                    <div className="result-card__name">{result.source_info.product_name}</div>
+                    <div className="result-card__name">{result.source_info.product_name} ({result.source_info.manufacturer})</div>
                   </div>
+                  {result.source_info.dosage_regimen &&
+                    <div className="result-card__row">
+                      <div className="result-card__subtitle">Дозировка</div>
+                      <div className="result-card__text">{result.source_info.dosage_regimen}</div>
+                    </div>
+                  }
                   {result.analysis.component_facts.health_effect_description &&
                     <div className="result-card__row">
                       <div className="result-card__subtitle">Описание продукта</div>
@@ -105,10 +111,37 @@ export default function Result() {
                       </div>
                     </div>
                   </div>
+                  {result.source_info.component_sources &&
+                    <div className="result__panel-item">
+                      <div className="result__panel-title">
+                        <div className="result__panel-title-num">04</div>
+                        Научные источники
+                      </div>
+                      <div className="result__panel-body">
+                        <div className="result__panel-text content">
+                          <ol>
+                            {result.source_info.component_sources.map((item, index) => (
+                              <li>
+                                {item.component_name}. {item.citation} (Нормативный источник) - <a href={item.source_url} className="result__link" target='_blank' rel="noopener noreferrer">{item.source_url}</a>
+                              </li>
+                            ))}
+                          </ol>
+                        </div>
+                      </div>
+                    </div>
+                  }
                 </div>
                 <div className="result__panel">
                   <div className="result__panel-tag">РЕКОМЕНДАЦИЯ</div>
-
+                  {result.recommendation.recommendation_text &&
+                    <div className="result__panel-item">
+                      <div className="result__panel-body">
+                        <div className="result__panel-text content">
+                          {result.recommendation.recommendation_text}
+                        </div>
+                      </div>
+                    </div>
+                  }
                   <div className="result__panel-item">
                     <div className="result__panel-title">
                       <div className="result__panel-title-num">01</div>
@@ -127,7 +160,7 @@ export default function Result() {
                             <p className='green-text'>Состав:</p>
                             <ul>
                               {recomendedProduct?.composition && recomendedProduct.composition.map(item => (
-                                <li>{item.name}({item.form}) - {item.dosage}{item.unit}</li>
+                                <li>{item.name}{item.form == 'no_reference_data' ? '(Нет данных в справочнике)' : ''}  - {item.dosage}{item.unit}</li>
                               ))}
                             </ul>
                           </div>
@@ -162,6 +195,7 @@ export default function Result() {
                               <th>Верхний безопасный предел потребления, мг</th>
                               <th>Суточная доза текущего товара, мг</th>
                               <th>Суточная доза рекомендованного товара, мг</th>
+                              <th>verdict</th>
                               <th>Заключение</th>
                             </tr>
                           </thead>
@@ -173,6 +207,7 @@ export default function Result() {
                                 <td>{item.upper_limit_mg}</td>
                                 <td>{item.current_product_dose_mg}</td>
                                 <td>{item.recommended_product_dose_mg}</td>
+                                <td>{item.verdict}</td>
                                 <td>{item.conclusion}</td>
                               </tr>
                             ))}
@@ -192,7 +227,7 @@ export default function Result() {
                       }
                     </div>
                   </div>
-                  {result.source_info.component_sources &&
+                  {resultComparison.scientific_sources &&
                     <div className="result__panel-item">
                       <div className="result__panel-title">
                         <div className="result__panel-title-num">04</div>
@@ -201,9 +236,9 @@ export default function Result() {
                       <div className="result__panel-body">
                         <div className="result__panel-text content">
                           <ol>
-                            {result.source_info.component_sources.map((item, index) => (
+                            {resultComparison.scientific_sources.map((item, index) => (
                               <li>
-                                {item.component_name}. {item.type} - <a href={item.source_url} className="result__link" target='_blank' rel="noopener noreferrer">{item.source_url}</a>
+                                {item.component_name}. {item.citation} (Нормативный источник) - <a href={item.source_url} className="result__link" target='_blank' rel="noopener noreferrer">{item.source_url}</a>
                               </li>
                             ))}
                           </ol>
