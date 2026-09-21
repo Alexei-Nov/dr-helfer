@@ -68,6 +68,9 @@ body {
 .content ol {
   padding-left: 16px;
 }
+.content ol > li:not(:last-child) {
+  margin-bottom: 5px;
+}
 
 .btn {
   display: flex;

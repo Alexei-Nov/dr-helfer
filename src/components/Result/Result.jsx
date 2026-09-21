@@ -4,6 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setAnalysisId } from '../../toolkitRedux/toolkitSlice';
 import { NavLink } from 'react-router-dom';
 
+const statusLabels = {
+  compatable: 'Соответствует',
+  missing_in_current: 'Отсутствует в текущем',
+  missing_in_candidate: 'Отсутствует в кандидате',
+  no_reference_data: 'Нет данных в справочнике',
+};
+
 export default function Result() {
   const { result, resultComparison, recomendedProduct } = useSelector(state => state.toolkit);
   const dispatch = useDispatch();
@@ -11,6 +18,7 @@ export default function Result() {
   const startNewAnalysis = () => {
     dispatch(setAnalysisId(null));
   };
+
 
   return (
     <section className="section result">
@@ -88,7 +96,7 @@ export default function Result() {
                         <br />
                         <p className='green-text'>Список неоценённых веществ</p>
                         {result.analysis.unassessed_components.map((item, index) => (
-                          <p>{item.component_name} ({item.reason})</p>
+                          <p>{item.component_name} {item.reason ? "(" + statusLabels[item.reason] + ")" : ''} </p>
                         ))}
                       </div>
                     </div>
@@ -160,7 +168,7 @@ export default function Result() {
                             <p className='green-text'>Состав:</p>
                             <ul>
                               {recomendedProduct?.composition && recomendedProduct.composition.map(item => (
-                                <li>{item.name}{item.form == 'no_reference_data' ? '(Нет данных в справочнике)' : ''}  - {item.dosage}{item.unit}</li>
+                                <li>{item.name}{item.form && statusLabels[item.form] ? '(' + statusLabels[item.form] + ')' : ''}  - {item.dosage}{item.unit}</li>
                               ))}
                             </ul>
                           </div>
@@ -195,7 +203,7 @@ export default function Result() {
                               <th>Верхний безопасный предел потребления, мг</th>
                               <th>Суточная доза текущего товара, мг</th>
                               <th>Суточная доза рекомендованного товара, мг</th>
-                              <th>verdict</th>
+                              <th>Вердикт</th>
                               <th>Заключение</th>
                             </tr>
                           </thead>
@@ -207,7 +215,7 @@ export default function Result() {
                                 <td>{item.upper_limit_mg}</td>
                                 <td>{item.current_product_dose_mg}</td>
                                 <td>{item.recommended_product_dose_mg}</td>
-                                <td>{item.verdict}</td>
+                                <td>{statusLabels[item.verdict]}</td>
                                 <td>{item.conclusion}</td>
                               </tr>
                             ))}

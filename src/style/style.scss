@@ -67,6 +67,11 @@ body {
 .content {
   & ol {
     padding-left: 16px;
+    & > li {
+      &:not(:last-child) {
+        margin-bottom: 5px;
+      }
+    }
   }
 }
 
