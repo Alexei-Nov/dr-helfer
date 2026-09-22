@@ -15,7 +15,7 @@ export default function Entrance() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (files.length < 2 || loading) return;
+    if (files.length < 1 || loading) return;
 
     try {
       setLoading(true);
